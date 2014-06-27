@@ -40,14 +40,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         println( searchBar.text )
         
         searchBar.resignFirstResponder()
+        
+        
+        serverCall(searchBar.text)
+       
+      // comment server call & uncomment below code : the result will be same .
+        
+    /**
         var urlString = "http://itunes.apple.com/search?term=\(searchBar.text)"
         println(urlString )
         let url = NSURL.URLWithString(urlString)
         var request = NSURLRequest (URL: url)
+    
+        
+        
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) in
             println(NSString(data: data, encoding: NSUTF8StringEncoding))
             
+            
+        
        //var json : AnyObject! = NSKeyedUnarchiver.unarchiveObjectWithData(data) as AnyObject
         let jsonObject : NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
    
@@ -71,10 +83,80 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
             self.tableView.reloadData()
         }
+        
+        
+        **/
 
     }
     
+    
+    
+    
+    
+    func serverCall(keyword:String) {
+        
+        
+      println(  NSThread.currentThread())
+        
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        
+        dispatch_async(dispatch_get_global_queue(priority, 0), { ()->() in
+            println("gcd hello")
+            println(  NSThread.currentThread())
 
+            var urlString = "http://itunes.apple.com/search?term=\(keyword)"
+            println(urlString )
+            let url = NSURL.URLWithString(urlString)
+            var request = NSURLRequest (URL: url)
+            
+            
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) { (response, data, error) in
+                
+                println(NSString(data: data, encoding: NSUTF8StringEncoding))
+                
+                
+                
+                let jsonObject : NSDictionary! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+                
+                println(jsonObject)
+                
+                let json : AnyObject! = jsonObject["results"] as AnyObject
+                let rawArray = json as NSArray
+                self.items.removeAll(keepCapacity: false)
+                
+                for temDic : AnyObject in rawArray{
+                    
+                    var dic:NSDictionary = temDic as NSDictionary
+                    
+                    let obj = ArtWork (trackName: dic["trackName"]as String,artistName: dic["artistName"] as String)
+                    
+                    println("--------\(obj.artistName)")
+                    
+                    self.items.append(obj)
+                    
+                }
+                
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    println("hello from UI thread executed as dispatch22")
+
+                    println(  NSThread.currentThread())
+
+                    self.tableView.reloadData()
+
+                    
+                    
+
+                    })
+                
+            }
+    
+  
+            })
+        println("hello from UI thread")
+        
+        
+    }
     
     
     
