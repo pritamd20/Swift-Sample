@@ -8,19 +8,31 @@
 
 import Foundation
 
-class ArtWork: NSObject {
-
+class ArtWork: NSObject
+{
+ 
+    var trackName: String?
+    var artistName: String?
+    var artworkUrl: String?
+//    var collectionPrice:String?
+//    var previewUrl:String?
+//    var primaryGenreName:String?
+//    var shortDescription:String?
+//    var trackViewUrl:String?
     
-    
-        var trackName: String
-        var artistName: String
+    init(trackName:String,artistName:String,artworkUrl:String)
+    {
+            
+        self.trackName = trackName
+        self.artistName = artistName
+        self.artworkUrl = artworkUrl
+//        self.collectionPrice = collectionPrice
+//        self.previewUrl = previewUrl
+//        self.primaryGenreName = primaryGenreName
+//        self.shortDescription = shortDescription
+//        self.trackViewUrl = trackViewUrl
         
-        init(trackName:String,artistName:String){
-            
-            self.trackName = trackName
-            self.artistName = artistName
-            
-        }
+    }
         
     
     

@@ -112,7 +112,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) { (response, data, error) in
                 
-                println(NSString(data: data, encoding: NSUTF8StringEncoding))
+               // println(NSString(data: data, encoding: NSUTF8StringEncoding))
                 
                 
                 
@@ -128,7 +128,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     var dic:NSDictionary = temDic as NSDictionary
                     
-                    let obj = ArtWork (trackName: dic["trackName"]as String,artistName: dic["artistName"] as String)
+                    let obj = ArtWork (trackName: dic["trackName"]as String, artistName: dic["artistName"] as String,artworkUrl:dic["artworkUrl100"] as String)
                     
                     println("--------\(obj.artistName)")
                     
@@ -158,7 +158,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    
+    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        return 80
+    }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
          return self.items.count
@@ -170,7 +172,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
          var obj1 = self.items[indexPath.row] as ArtWork
         
         cell.textLabel.text = obj1.artistName
+        cell.imageView.image = UIImage(named: "paceholder.png")
         
+        
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+
+        dispatch_async(dispatch_get_global_queue(priority, 0), { ()->() in
+            
+            var imageUrlString = obj1.artworkUrl
+            let imageUrl = NSURL.URLWithString(imageUrlString)
+            var imageRequest = NSURLRequest (URL: imageUrl)
+            
+            
+            NSURLConnection.sendAsynchronousRequest(imageRequest, queue: NSOperationQueue()) { (response, data, error) in
+                
+                //println(NSString(data: data, encoding: NSUTF8StringEncoding))
+                
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    cell.imageView.image = UIImage(data: data)
+                    println("imgcall")
+                    })
+            }
+        
+        
+        })
+            
         return cell
     }
     
