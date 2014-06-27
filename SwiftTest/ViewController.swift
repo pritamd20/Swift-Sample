@@ -24,8 +24,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
  
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        
+    
     
         
     }
@@ -128,12 +127,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     var dic:NSDictionary = temDic as NSDictionary
                     
-                    let obj = ArtWork (trackName: dic["trackName"]as String, artistName: dic["artistName"] as String,artworkUrl:dic["artworkUrl100"] as String)
+                    let obj = ArtWork (trackName: dic["trackName"] as? String, artistName: dic["artistName"] as? String,artworkUrl:dic["artworkUrl100"] as? String, collectionPrice:dic["collectionPrice"] as? String,previewUrl:dic["previewUrl"] as? String,primaryGenreName:dic["primaryGenreName"] as? String,shortDescription:dic["shortDescription"] as? String,trackViewUrl:dic["trackViewUrl"] as? String)
                     
                     println("--------\(obj.artistName)")
-                    
-                    self.items.append(obj)
-                    
+                    if obj.artistName != nil && obj.trackName != nil {
+                       self.items.append(obj)
+                    }
                 }
                 
                 
@@ -167,12 +166,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
+        cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "cell")
+    
+         var obj1 = self.items [indexPath.row] as ArtWork!
         
-         var obj1 = self.items[indexPath.row] as ArtWork
-        
-        cell.textLabel.text = obj1.artistName
-        cell.imageView.image = UIImage(named: "paceholder.png")
+
+        if obj1.trackName != nil {
+          cell.textLabel.text = obj1.trackName!
+        }
+        if cell.detailTextLabel  {
+           cell.detailTextLabel.text = obj1.artistName!
+        }
+        cell.imageView.image = UIImage(named:"paceholder.png")
         
         
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
@@ -204,7 +210,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         println("You selected cell #\(indexPath.row)!")
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        var obj1 = self.items[indexPath.row] as ArtWork
+        var obj1 = self.items [indexPath.row] as ArtWork!
         
 
        // self.navigationController.performSegueWithIdentifier("NextView", sender: nil)
