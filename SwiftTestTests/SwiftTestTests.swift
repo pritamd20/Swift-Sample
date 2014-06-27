@@ -3,7 +3,7 @@
 //  SwiftTestTests
 //
 //  Created by Preetham Dsouza on 13/06/2014.
-//  Copyright (c) 2014 keytree. All rights reserved.
+//  Copyright (c) 2014 company. All rights reserved.
 //
 
 import XCTest
