@@ -100,7 +100,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         
         dispatch_async(dispatch_get_global_queue(priority, 0), { ()->() in
-            println("gcd hello")
+            println("gcd ")
             println(  NSThread.currentThread())
 
             var urlString = "http://itunes.apple.com/search?term=\(keyword)"
@@ -137,7 +137,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 
                 dispatch_async(dispatch_get_main_queue(), {
-                    println("hello from UI thread executed as dispatch22")
+                    println(" UI thread executed ")
 
                     println(  NSThread.currentThread())
 
@@ -152,7 +152,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
   
             })
-        println("hello from UI thread")
+        println(" UI thread")
         
         
     }
@@ -194,6 +194,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 //println(NSString(data: data, encoding: NSUTF8StringEncoding))
                 
+
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     cell.imageView.image = UIImage(data: data)

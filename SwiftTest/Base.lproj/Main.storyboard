@@ -61,7 +61,7 @@
         <!--Next View Controller-->
         <scene sceneID="lTh-Hc-uWT">
             <objects>
-                <viewController storyboardIdentifier="NextViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SH8-q0-Leg" customClass="NextViewController" customModule="SwiftTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NextViewController" id="SH8-q0-Leg" customClass="NextViewController" customModule="SwiftTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sWA-3g-zgX"/>
                         <viewControllerLayoutGuide type="bottom" id="mwx-u9-Inx"/>
@@ -71,36 +71,86 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECm-m3-XnC">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <rect key="frame" x="0.0" y="11" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="94" width="228" height="26"/>
+                                    <rect key="frame" x="20" y="35" width="228" height="26"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="63" width="228" height="26"/>
                                 </variation>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HDQ-zu-POn">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="82" width="199" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="71S-O0-yRA">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="132" width="199" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="npT-vu-wwB">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="183" width="199" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqP-A6-lgj">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Insert" backgroundImage="paceholder">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="80" y="237" width="93" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="insertButtonClicked:" destination="SH8-q0-Leg" eventType="touchUpInside" id="wwy-Lh-tQw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="ECm-m3-XnC"/>
+                                <exclude reference="HDQ-zu-POn"/>
+                                <exclude reference="71S-O0-yRA"/>
+                                <exclude reference="npT-vu-wwB"/>
+                                <exclude reference="ZqP-A6-lgj"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="subviews">
                                 <include reference="ECm-m3-XnC"/>
+                                <include reference="HDQ-zu-POn"/>
+                                <include reference="71S-O0-yRA"/>
+                                <include reference="npT-vu-wwB"/>
+                                <include reference="ZqP-A6-lgj"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Ozu-8C-tgd"/>
                     <connections>
                         <outlet property="nameLabel" destination="ECm-m3-XnC" id="NTr-sU-WHO"/>
+                        <outlet property="nameTextField" destination="HDQ-zu-POn" id="fFm-MN-ntj"/>
+                        <outlet property="priceTextField" destination="npT-vu-wwB" id="9HL-Kg-EPq"/>
+                        <outlet property="trackNameTextField" destination="71S-O0-yRA" id="imQ-pZ-JAX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C16-bU-ZKF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="514" y="301.5"/>
+            <point key="canvasLocation" x="520.5" y="345"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="soI-pg-dZR">
@@ -116,7 +166,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zf8-Wr-V7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-690" y="455"/>
+            <point key="canvasLocation" x="-690" y="301"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="paceholder" width="80" height="80"/>
+    </resources>
 </document>

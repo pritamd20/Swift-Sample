@@ -12,8 +12,11 @@
 		53312958194B319E005187D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53312957194B319E005187D8 /* ViewController.swift */; };
 		5331295D194B319E005187D8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5331295C194B319E005187D8 /* Images.xcassets */; };
 		53312969194B319E005187D8 /* SwiftTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53312968194B319E005187D8 /* SwiftTestTests.swift */; };
+		53507E70196182500025276F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 53507E6F196182500025276F /* libsqlite3.dylib */; };
 		53BA93F0195C647C0097676F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53BA93EE195C647C0097676F /* Main.storyboard */; };
 		53BA941F195C6C8A0097676F /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BA941E195C6C8A0097676F /* NextViewController.swift */; };
+		53EEE8881964097C008ED249 /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EEE8861964097C008ED249 /* Bridge.m */; };
+		53EEE88A196409E8008ED249 /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EEE889196409E8008ED249 /* SQLiteDB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +39,13 @@
 		53312962194B319E005187D8 /* SwiftTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53312967194B319E005187D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53312968194B319E005187D8 /* SwiftTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTestTests.swift; sourceTree = "<group>"; };
+		53507E6F196182500025276F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		53BA93EF195C647C0097676F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		53BA941E195C6C8A0097676F /* NextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
+		53EEE8851964097C008ED249 /* Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		53EEE8861964097C008ED249 /* Bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bridge.m; sourceTree = "<group>"; };
+		53EEE8871964097C008ED249 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		53EEE889196409E8008ED249 /* SQLiteDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDB.swift; sourceTree = "<group>"; };
 		53F087AC195856A300F238F2 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53507E70196182500025276F /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +71,7 @@
 		53312947194B319E005187D8 = {
 			isa = PBXGroup;
 			children = (
+				53507E6F196182500025276F /* libsqlite3.dylib */,
 				53069840195ACE0600BD275F /* ArtWork.swift */,
 				53F087AC195856A300F238F2 /* MyPlayground.playground */,
 				53312952194B319E005187D8 /* SwiftTest */,
@@ -87,6 +97,10 @@
 				53BA941E195C6C8A0097676F /* NextViewController.swift */,
 				53BA93EE195C647C0097676F /* Main.storyboard */,
 				5331295C194B319E005187D8 /* Images.xcassets */,
+				53EEE8851964097C008ED249 /* Bridge.h */,
+				53EEE8861964097C008ED249 /* Bridge.m */,
+				53EEE8871964097C008ED249 /* Bridging-Header.h */,
+				53EEE889196409E8008ED249 /* SQLiteDB.swift */,
 				53312953194B319E005187D8 /* Supporting Files */,
 			);
 			path = SwiftTest;
@@ -218,6 +232,8 @@
 			files = (
 				53312958194B319E005187D8 /* ViewController.swift in Sources */,
 				53BA941F195C6C8A0097676F /* NextViewController.swift in Sources */,
+				53EEE8881964097C008ED249 /* Bridge.m in Sources */,
+				53EEE88A196409E8008ED249 /* SQLiteDB.swift in Sources */,
 				53312956194B319E005187D8 /* AppDelegate.swift in Sources */,
 				53069841195ACE0600BD275F /* ArtWork.swift in Sources */,
 			);
@@ -291,6 +307,8 @@
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -327,6 +345,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -340,6 +359,8 @@
 				INFOPLIST_FILE = SwiftTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftTest/Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "SwiftTest/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -351,6 +372,7 @@
 				INFOPLIST_FILE = SwiftTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftTest/Bridging-Header.h";
 			};
 			name = Release;
 		};
